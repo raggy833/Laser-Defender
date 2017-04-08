@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: 26c853ab6f75bfa4797307b794c767d8
+timeCreated: 1489382637
+licenseType: Free
+MonoImporter:
+  serializedVersion: 2
+  defaultReferences:
+  - Projectile: {fileID: 1288002880712978, guid: c718e34b43bea7346bf2fff9e0131b98,
+      type: 2}
+  - fireSound: {fileID: 8300000, guid: 78eff05f87f6b244cb071dd08933dcee, type: 3}
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
