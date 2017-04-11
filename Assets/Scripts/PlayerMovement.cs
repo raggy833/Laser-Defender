@@ -32,26 +32,33 @@ public class PlayerMovement : MonoBehaviour
         beam.GetComponent<Rigidbody2D>().velocity = new Vector3(0, projectileSpeed, 0);
         AudioSource.PlayClipAtPoint(fireSound, transform.position);
     }
-
+    
+    FireData fireData = new FireData { 
+    fireRate = 0.5f 
+    };
+    
     void Update(){
         if (timeLeft > 0){
             timeLeft -= Time.deltaTime;
-     }
-        if (Input.GetKeyDown(KeyCode.Space)){
-            InvokeRepeating("Fire", 0.000001f, fireRate);
         }
+        if (Input.GetKeyDown(KeyCode.Space)){
+            fireDate.fireRate = true;
+            }
+        if (fireData.fireRate){
+            InvokeRepeating("Fire", 0.000001f, fireRate);
+            }
         if (Input.GetKeyUp(KeyCode.Space)){
             CancelInvoke("Fire");
-     }
+            }
         if (Input.GetKey(KeyCode.LeftArrow)){
             transform.position += Vector3.left * speed * Time.deltaTime;
-    }
+            }
         else if (Input.GetKey(KeyCode.RightArrow)){
             transform.position += Vector3.right * speed * Time.deltaTime;
-    }
+            }
         float newX = Mathf.Clamp(transform.position.x, xmin, xmax);
         transform.position = new Vector3(newX, transform.position.y, transform.position.z);
-    }
+            }
 
     void PowerUp()
     {
@@ -59,12 +66,12 @@ public class PlayerMovement : MonoBehaviour
         timeLeft = +5f;
         if (Upgrade == true)
         {
-            fireRate = 0.1f;
+            fireData.fireRate = 0.1f;
         }
         if (timeLeft <= 0)
         {
             Upgrade = false;
-            fireRate = 0.5f;
+            fireData.fireRate = 0.5f;
         }
     }
 
@@ -92,4 +99,8 @@ public class PlayerMovement : MonoBehaviour
     }
 }
 
+public class FireData
+{
+    public float fireRate = 0.1;
+}
      
